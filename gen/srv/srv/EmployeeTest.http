@@ -1,0 +1,85 @@
+
+###getting the details
+GET http://localhost:4004/EmployeeSRV/Employee?$expand=address HTTP/1.1
+
+
+###Getting one employee along with his details by using emp_ID.. 
+GET http://localhost:4004/EmployeeSRV/Employee/1f62c065-fe09-4fb4-96b5-e505df889ac1 HTTP/1.1
+
+###Getting one employee along with full details by using "fName"...
+GET http://localhost:4004/EmployeeSRV/Employee?$expand=address&$filter=fName eq 'Ram' HTTP/1.1
+
+
+###Deleting the one employee along with his all details..
+DELETE http://localhost:4004/EmployeeSRV/Employee/baeb18b6-68e2-4fe5-821c-99a4da20b893 HTTP/1.1
+
+###Getting one employee along with his detailsa and address...
+GET http://localhost:4004/EmployeeSRV/Employee/1f62c065-fe09-4fb4-96b5-e505df889ac1?$expand=address HTTP/1.1
+
+
+###Posting the one employee to db or csv file...
+POST http://localhost:4004/EmployeeSRV/Employee  HTTP/1.1
+content-Type: application/json
+ 
+  {
+      "fName": "Chiranjivi",
+      "lName": "Seshadri",
+      "gender": "Male",
+      "DOB": "1990-02-01",
+      "contractStarted": "2012-03-11",
+      "email": "ChiranjiviSeshadri1@abc.com",
+      "phone": "8564543279"
+    }
+###Another one emp added to database...
+POST http://localhost:4004/EmployeeSRV/Employee  HTTP/1.1
+content-Type: application/json
+ 
+  {
+      "fName": "Srileka",
+      "lName": "Seshadra",
+      "gender": "Female",
+      "DOB": "1947-02-01",
+      "contractStarted": "2012-03-11",
+      "email": "srilekaSeshadra1@abc.com",
+      "phone": "8564543270"
+    }
+
+### Read Designations for all employees...
+GET http://localhost:4004/EmployeeSRV/Designation HTTP/1.1
+
+ 
+###Create Designation into the database but couldn't created because you restrict the designation with annotation#@readonly  
+POST http://localhost:4004/EmployeeSRV/Designation HTTP/1.1
+Content-Type: application/json
+
+    {
+      "name": "Test deletion",
+      "description": "Test deletion",
+      "level": "100"
+    }
+
+### Get All The Data from Employee Database for all the emp in the database...
+GET http://localhost:4004/EmployeeSRV/Employee?$expand=salary,department,designation,address HTTP/1.1
+
+#=========================================================================================================>
+#here we can't read and delete and create one designation file to the database because you created one restriction file with some restrictions..
+//here we can get an error like 
+    # "code": "405",
+    # "message": "Entity \"Designation\" is not deletable",
+    # "@Common.numericSeverity": 4
+### Read Designations
+GET http://localhost:4004/EmployeeSRV/Designation HTTP/1.1
+
+### Delete Designation Negative testing
+DELETE http://localhost:4004/EmployeeSRV/Designation/27e7121c-2860-4b1c-915c-9f46b2b4b95f HTTP/1.1
+
+### Create Designation Negative testing
+POST http://localhost:4004/EmployeeSRV/Designation HTTP/1.1
+Content-Type: application/json
+
+    {
+      "name": "Test deletion",
+      "description": "Test deletion",
+      "level": "100"
+    }
+    
