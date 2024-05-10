@@ -21,7 +21,6 @@ const onBeforeEmployeeCreate = async (req) => {
 }
 
 const onAfterEmployeeCreate = async (req) => {
-
     console.log("After Event is triggered");
 }
 

@@ -13,7 +13,7 @@ GET http://localhost:4004/EmployeeSRV/Employee?$expand=address&$filter=fName eq 
 ###Deleting the one employee along with his all details..
 DELETE http://localhost:4004/EmployeeSRV/Employee/baeb18b6-68e2-4fe5-821c-99a4da20b893 HTTP/1.1
 
-###Getting one employee along with his detailsa and address...
+###Getting one employee along with his details and address...
 GET http://localhost:4004/EmployeeSRV/Employee/1f62c065-fe09-4fb4-96b5-e505df889ac1?$expand=address HTTP/1.1
 
 
